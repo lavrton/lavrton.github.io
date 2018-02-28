@@ -146,6 +146,7 @@ h1 {
 }
 
 h2 {
+  font-size: 30px;
   font: italic 19px/1.3em Georgia, serif;
   color: #bbb;
 }
@@ -186,10 +187,10 @@ h2 {
 }
 
 .profile h1 {
-  font-weight: 600; /*400*/
+  font-weight: 300; /*400*/
   letter-spacing: -2px; /*0px*/
   font-size: 3em; /*20px*/
-  color: #222;
+  color: rgb(150, 150, 150);
 }
 
 @media only screen and (max-width: 640px) {
@@ -199,7 +200,7 @@ h2 {
 }
 
 .profile h2 {
-  font-size: 20px;
+  font-size: 40px;
   font-weight: 300;
   color: rgb(48, 47, 47);
   margin-top: 10px;
