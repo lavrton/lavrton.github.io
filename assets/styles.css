@@ -291,6 +291,17 @@ nav.main-nav a.cta {
   box-shadow: 0 0 10px grey;
 }
 
+.section {
+  max-width: 720px; /*600px*/
+  margin: 0 auto;
+  padding: 20px 10px 100px 10px;
+  text-align: center;
+}
+
+.section h3 {
+  padding-bottom: 20px;
+}
+
 /* Typography */
 /*Accent color*/
 a,
