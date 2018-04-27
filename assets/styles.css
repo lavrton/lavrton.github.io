@@ -152,13 +152,29 @@ h2 {
 }
 
 .profile #wrapper {
-  padding: 100px 40px 0px;
+  padding: 50px 40px 0px;
   max-width: 650px;
   margin: 0 auto;
 }
 
 @media only screen and (max-width: 640px) {
   .profile #wrapper {
+    padding: 20px 40px 0px;
+  }
+}
+
+.profile #calls {
+  padding: 10px 40px 0px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.profile #calls h2 {
+  font-size: 25px;
+}
+
+@media only screen and (max-width: 640px) {
+  .profile #calls {
     padding: 60px 40px 0px;
   }
 }
@@ -255,6 +271,24 @@ nav.main-nav a.cta {
   max-width: 600px;
   margin: 0 auto;
   padding: 0px 40px 20px 40px;
+}
+
+.companies {
+  max-width: 720px; /*600px*/
+  margin: 0 auto;
+  padding: 20px 10px 10px 10px;
+  text-align: center;
+}
+
+.companies h3 {
+  font-size: 30px;
+}
+
+.companies img {
+  height: 80px;
+  width: auto;
+  margin: 20px;
+  box-shadow: 0 0 10px grey;
 }
 
 /* Typography */
