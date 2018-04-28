@@ -173,6 +173,10 @@ h2 {
   font-size: 25px;
 }
 
+.profile #calls strong {
+  font-weight: 500;
+}
+
 @media only screen and (max-width: 640px) {
   .profile #calls {
     padding: 60px 40px 0px;
