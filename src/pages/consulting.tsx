@@ -155,7 +155,7 @@ const Consulting: React.SFC = () => (
                     name="_subject"
                     value="Do you need a help from Anton Lavrenov?"
                   />
-                  <input type="hidden" name="_next" value="https://lavrton.com/sent.html" />
+                  <input type="hidden" name="_next" value="https://lavrton.com/sent" />
                   <input type="submit" value="Send" />
                 </fieldset>
               </form>

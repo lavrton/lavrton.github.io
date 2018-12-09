@@ -14,8 +14,10 @@
     "deploy": "gatsby build && gh-pages -d public -b master"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "babel-plugin-styled-components": "1.8.0",
     "classnames": "2.2.6",
+    "core-js": "^2.6.0",
     "cssnano": "4.1.7",
     "disqus-react": "^1.0.5",
     "emotion": "9.2.12",
