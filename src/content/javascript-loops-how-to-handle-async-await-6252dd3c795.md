@@ -3,7 +3,7 @@ layout: post
 title: "JavaScript loops — how to handle async/await"
 author: Anton
 tags: ["javascript"]
-image: img/async-loops-cover.png
+image: img/async-loops-cover.jpg
 date: "2017-10-31"
 draft: true
 ---

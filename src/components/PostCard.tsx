@@ -201,14 +201,13 @@ const PostCard: React.SFC<PostCardProps> = ({ post }) => {
       {post.frontmatter.image && (
         <Link className={`${PostCardImageLink} post-card-image-link`} to={post.fields.slug}>
           <PostCardImage className="post-card-image">
-            {post.frontmatter.image &&
-              post.frontmatter.image.childImageSharp.fluid && (
-                <Img
-                  alt={`${post.frontmatter.title} cover image`}
-                  style={{ height: '100%' }}
-                  fluid={post.frontmatter.image.childImageSharp.fluid}
-                />
-              )}
+            {post.frontmatter.image && post.frontmatter.image.childImageSharp.fluid && (
+              <Img
+                alt={`${post.frontmatter.title} cover image`}
+                style={{ height: '100%' }}
+                fluid={post.frontmatter.image.childImageSharp.fluid}
+              />
+            )}
           </PostCardImage>
         </Link>
       )}
@@ -223,7 +222,7 @@ const PostCard: React.SFC<PostCardProps> = ({ post }) => {
           </PostCardExcerpt>
         </Link>
         <PostCardMeta className="post-card-meta">
-          <AuthorList>
+          {/* <AuthorList>
             <AuthorListItem>
               <AuthorNameTooltip className="author-name-tooltip">
                 {post.frontmatter.author.id}
@@ -239,7 +238,7 @@ const PostCard: React.SFC<PostCardProps> = ({ post }) => {
                 />
               </Link>
             </AuthorListItem>
-          </AuthorList>
+          </AuthorList> */}
           <ReadingTime>{post.timeToRead} min read</ReadingTime>
         </PostCardMeta>
       </PostCardContent>

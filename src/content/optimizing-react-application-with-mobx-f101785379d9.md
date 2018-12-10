@@ -3,7 +3,7 @@ layout: post
 title: "Optimizing React application with mobx"
 author: Anton
 tags: ["React"]
-image: img/react-mobx-perf-cover.png
+image: img/react-mobx-perf-cover.jpg
 date: "2017-10-20"
 draft: true
 ---

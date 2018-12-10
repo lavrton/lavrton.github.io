@@ -75,7 +75,7 @@ const ConsultingTemplate = css`
 const Consulting: React.SFC = () => (
   <IndexLayout>
     <Helmet>
-      <title>About</title>
+      <title>Consulting</title>
     </Helmet>
     <Wrapper className={`${PageTemplate}`}>
       <header className={`${SiteHeader} ${outer}`}>
@@ -104,11 +104,22 @@ const Consulting: React.SFC = () => (
               <h2>I can help you with that.</h2>
               <p>My name is Anton Lavrenov. I help companies create graphical web-applications.</p>
               <h3>Things I've made</h3>
-              <blockquote>
-                Konva is an Open-Source 2d canvas graphic library. I am using it a lot in my work.
-                Also I am making ecosystems tools that fit better into modern web development flow
-                like React-Konva. You can find more on GitHub.
-              </blockquote>
+              <p>
+                I am maintainer of{' '}
+                <a href="https://konvajs.github.io/" target="_blank">
+                  Konva
+                </a>
+                . It is an Open-Source 2d canvas graphic library. Also I am making an ecosystem of
+                tools that fit better into modern web development flow like{' '}
+                <a href="https://konvajs.github.io/docs/react" target="_blank">
+                  react-konva
+                </a>
+                . You can find more on{' '}
+                <a href="https://github.com/lavrton" target="_blank">
+                  GitHub
+                </a>
+                .
+              </p>
               <h2> Kind words</h2>
               <blockquote>
                 <p>

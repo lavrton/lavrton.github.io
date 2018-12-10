@@ -207,11 +207,11 @@ export interface PageContext {
 }
 
 const disqusShortname = 'lavrton-com';
-const disqusConfig = {
-  // url: this.props.article.url,
-  // identifier: this.props.article.id,
-  // title: this.props.article.title,
-};
+// const disqusConfig = {
+//   // url: this.props.article.url,
+//   // identifier: this.props.article.id,
+//   // title: this.props.article.title,
+// };
 
 const PageTemplate: React.SFC<PageTemplateProps> = props => {
   const post = props.data.markdownRemark;
@@ -221,6 +221,15 @@ const PageTemplate: React.SFC<PageTemplateProps> = props => {
     width = post.frontmatter.image.childImageSharp.fluid.sizes.split(', ')[1].split('px')[0];
     height = String(Number(width) / post.frontmatter.image.childImageSharp.fluid.aspectRatio);
   }
+
+  console.log(props);
+
+  const disqusConfig = {
+    // props: props,
+    identifier: props.pathContext.slug,
+    // identifier: this.props.article.id,
+    // title: this.props.article.title,
+  };
 
   return (
     <IndexLayout className="post-template">
@@ -249,7 +258,10 @@ const PageTemplate: React.SFC<PageTemplateProps> = props => {
         <meta name="twitter:description" content={post.excerpt} />
         <meta name="twitter:url" content={config.siteUrl + props.pathContext.slug} />
         {post.frontmatter.image && (
-          <meta name="twitter:image" content={post.frontmatter.image.childImageSharp.fluid.src} />
+          <meta
+            name="twitter:image:src"
+            content={post.frontmatter.image.childImageSharp.fluid.src}
+          />
         )}
         <meta name="twitter:label1" content="Written by" />
         <meta name="twitter:data1" content={post.frontmatter.author.id} />
@@ -302,10 +314,31 @@ const PageTemplate: React.SFC<PageTemplateProps> = props => {
 
               {/* The big email subscribe modal content */}
               {config.showSubscribe && <Subscribe title={config.title} />}
+              <hr />
+              <div
+                style={{
+                  textAlign: 'center',
+                }}
+              >
+                <img
+                  src={post.frontmatter.author.avatar.children[0].fixed.src}
+                  alt={`Anton Lavrenov`}
+                  style={{
+                    marginRight: '25px',
+                    // marginBottom: 0,
+                    width: '100px',
+                    borderRadius: '50px',
+                    // height: '50px',
+                  }}
+                />
+                Personal blog by <a href="https://twitter.com/lavrton">Anton Lavrenov</a>.
+              </div>
+
+              <hr />
 
               <PostFullFooter>
-                {/* <AuthorCard author={post.frontmatter.author} /> */}
-                {/* <PostFullFooterRight authorId={post.frontmatter.author.id} /> */}
+                {/* <AuthorCard author={post.frontmatter.author} />
+                <PostFullFooterRight authorId={post.frontmatter.author.id} /> */}
                 <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
               </PostFullFooter>
             </article>

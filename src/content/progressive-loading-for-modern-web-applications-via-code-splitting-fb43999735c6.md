@@ -3,7 +3,7 @@ layout: post
 title: "Progressive loading for modern web applications via code splitting"
 author: Anton
 tags: ["javascript"]
-image: img/progressive-loading-cover.png
+image: img/progressive-loading-cover.jpg
 date: "2016-07-20"
 draft: false
 ---

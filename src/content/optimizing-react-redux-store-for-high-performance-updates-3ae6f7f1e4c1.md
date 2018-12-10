@@ -3,7 +3,7 @@ layout: post
 title: "Optimizing react-redux store for high performance updates"
 author: Anton
 tags: ["react", "performance"]
-image: img/redux-perf-cover.png
+image: img/redux-perf-cover.jpg
 date: "2016-12-22"
 draft: false
 ---

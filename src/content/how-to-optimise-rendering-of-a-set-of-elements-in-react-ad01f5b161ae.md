@@ -3,7 +3,7 @@ layout: post
 title: "Tips to optimise rendering of a set of elements in React"
 author: Anton
 tags: ["react", "performance"]
-image: img/react-perf-cover.png
+image: img/react-perf-cover.jpg
 date: "2016-05-11"
 draft: false
 ---

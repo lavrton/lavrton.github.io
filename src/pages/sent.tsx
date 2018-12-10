@@ -75,7 +75,7 @@ const ConsultingTemplate = css`
 const Consulting: React.SFC = () => (
   <IndexLayout>
     <Helmet>
-      <title>About</title>
+      <title>See you soon.</title>
     </Helmet>
     <Wrapper className={`${PageTemplate}`}>
       <header className={`${SiteHeader} ${outer}`}>

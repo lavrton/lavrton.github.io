@@ -3,7 +3,7 @@ layout: post
 title: "Hit Region Detection For HTML5 Canvas And How To Listen To Click Events On Canvas Shapes"
 author: Anton
 tags: ["canvas"]
-image: img/canvas-events-cover.png
+image: img/canvas-events-cover.jpg
 date: "2017-02-22"
 draft: false
 ---

@@ -102,7 +102,7 @@ const IndexPage: React.SFC<IndexProps> = props => {
         <meta name="twitter:title" content={config.title} />
         <meta name="twitter:description" content={config.description} />
         <meta name="twitter:url" content={config.siteUrl} />
-        <meta name="twitter:image" content={props.data.header.childImageSharp.fluid.src} />
+        <meta name="twitter:image:src" content={props.data.header.childImageSharp.fluid.src} />
         <meta name="twitter:site" content={`@${config.twitter.split('https://twitter.com/')[0]}`} />
         <meta property="og:image:width" content={width} />
         <meta property="og:image:height" content={height} />

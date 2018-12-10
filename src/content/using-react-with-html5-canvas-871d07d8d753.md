@@ -3,7 +3,7 @@ layout: post
 title: "Using React With Canvas Element"
 author: Anton
 tags: ["react", "canvas"]
-image: img/react-canvas-cover.png
+image: img/react-canvas-cover.jpg
 date: "2016-02-01"
 draft: false
 ---
