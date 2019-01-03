@@ -232,7 +232,7 @@ const PageTemplate: React.SFC<PageTemplateProps> = props => {
     // title: this.props.article.title,
   };
 
-  console.log(disqusConfig.url);
+  console.log(disqusConfig);
 
   return (
     <IndexLayout className="post-template">

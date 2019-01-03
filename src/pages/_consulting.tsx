@@ -139,7 +139,7 @@ const Consulting: React.SFC = () => (
                 best possible solution. Sounds interesting? Get in touch!
               </p>
               <form
-                action="https://formspree.io/anton@lavrton.com"
+                action="https://mailthis.to/anton@lavrton.com"
                 method="POST"
                 style={{
                   textAlign: 'center',
@@ -151,7 +151,7 @@ const Consulting: React.SFC = () => (
                     <input type="text" name="name" placeholder="Name" />
                   </div>
                   <div className="input-group fluid">
-                    <input type="email" name="email" placeholder="Email" />
+                    <input type="email" name="_replyto" placeholder="Email" />
                   </div>
                   <div className="input-group fluid">
                     <textarea
@@ -167,6 +167,7 @@ const Consulting: React.SFC = () => (
                     value="Do you need a help from Anton Lavrenov?"
                   />
                   <input type="hidden" name="_next" value="https://lavrton.com/sent" />
+                  <input type="hidden" name="_after" value="https://lavrton.com/sent" />
                   <input type="submit" value="Send" />
                 </fieldset>
               </form>

@@ -3,7 +3,7 @@ layout: post
 title: "JavaScript loops - how to handle async/await"
 author: Anton
 tags: ["javascript"]
-image: img/async-loops-cover.jpg
+image: img/async-loops-cover2.jpg
 date: "2017-10-31"
 draft: true
 ---
@@ -103,7 +103,7 @@ To wait the result we should return back to old-school “for loop”, but this 
 ```javascript
 async function processArray(array) {
   for (const item of array) {
-    await func(item);
+    await delayedLog(item);
   })
   console.log('Done!');
 }
