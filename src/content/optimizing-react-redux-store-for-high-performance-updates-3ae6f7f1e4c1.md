@@ -8,6 +8,8 @@ date: "2016-12-22"
 draft: false
 ---
 
+Looking of help with react performance? [Send me a message](/consulting/web-perf.html).
+
 # Optimizing react-redux store for high performance updates
 
 How to structure your redux store to improve rendering performance?
@@ -105,3 +107,5 @@ onst TargetView = connect(
 As `TargetView` is connected to store, it will update itself when its “target” data is updated. It is important that if we update an item in a list, “TargetList” will be NOT updated, because “targetsOrder” is the same. In the same cases, it may improve performance a lot. Demo: http://codepen.io/lavrton/pen/ZBLrWp
 
 > Updating an item takes 2.2ms on my machine. It is almost 10x faster then with previous shape of the state!
+
+Looking of help with react performance? [Send me a message](/consulting/web-perf.html).

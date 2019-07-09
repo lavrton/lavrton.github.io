@@ -1,24 +1,24 @@
 ---
 layout: post
-title: "Tips to optimise rendering of a set of elements in React"
+title: "React Canvas Application performance case study"
 author: Anton
 tags: ["react", "performance"]
 image: img/react-perf-cover.jpg
-date: "2016-05-11"
+date: "2019-01-10"
 draft: false
 ---
 
-Looking of help with react performance? [Send me a message](/consulting/web-perf.html).
+# How to build high performance React application with canvas?
 
-# Tips to optimise rendering of a set of elements in React
+Recently I was building large canvas application with a React for a client. The application is about drawing large graphs (shapes with/without connections) on a canvas. Similar application can do:
 
-There is a guide to increase React performance. The advanced tip will increase speed by 20 times.
+1. Drawing seats for a stadium (or large hall) for buying tickets
+2. Data visualizations
+3. Business schemes
 
-Rendering a list of some elements in a page is a common task for almost any web-app. In this post I would like to show how to improve performance for that case.
+That is how app looks like:
 
-For a test example we will create app that draws a set of targets (circles) on the `<canvas>` element. I will use Redux for a data storage. But these tips can be applied for many other state managing approaches. Also, you can use these tips with react-redux, but for a clear explanation I will not use it.
 
-Let me start from store definition.
 
 ```javascript
 function generateTargets() {
@@ -338,5 +338,3 @@ ReactDOM.render(
 // update one target
 state.targets[1].radius += 0.5
 ```
-
-Looking of help with react performance? [Send me a message](/consulting/web-perf.html).

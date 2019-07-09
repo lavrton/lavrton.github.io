@@ -95,8 +95,8 @@ function hasSameColor(color, circle) {
 
 canvas.addEventListener('click', (e) => {
   const mousePos = {
-    x: e.clientX - canvas.offsetTop,
-    y: e.clientY - canvas.offsetLeft
+    x: e.clientX - canvas.offsetLeft,
+    y: e.clientY - canvas.offsetTop
   };
   // get pixel under cursor
   const pixel = ctx.getImageData(mousePos.x, mousePos.y, 1, 1).data;

@@ -222,17 +222,11 @@ const PageTemplate: React.SFC<PageTemplateProps> = props => {
     height = String(Number(width) / post.frontmatter.image.childImageSharp.fluid.aspectRatio);
   }
 
-  // console.log(config, post.frontmatter.image.childImageSharp.fluid);
-
   const disqusConfig = {
-    // props: props,
     identifier: props.pathContext.slug,
     url: config.siteUrl + props.pathContext.slug,
-    // identifier: this.props.article.id,
-    // title: this.props.article.title,
   };
 
-  console.log(disqusConfig);
 
   return (
     <IndexLayout className="post-template">

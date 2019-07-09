@@ -77,7 +77,7 @@ async function delayedLog(item) {
 }
 async function processArray(array) {
   array.forEach(async (item) => {
-    await func(item);
+    await delayedLog(item);
   })
   console.log('Done!');
 }
@@ -104,7 +104,7 @@ To wait the result we should return back to old-school “for loop”, but this 
 async function processArray(array) {
   for (const item of array) {
     await delayedLog(item);
-  })
+  }
   console.log('Done!');
 }
 ```

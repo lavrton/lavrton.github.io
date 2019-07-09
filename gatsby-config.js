@@ -29,7 +29,12 @@ module.exports = {
             },
           },
           'gatsby-remark-prismjs',
-          'gatsby-remark-copy-linked-files',
+          {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              ignoreFileExtensions: [],
+            },
+          },
           'gatsby-remark-smartypants',
           'gatsby-remark-abbr',
           {
@@ -37,6 +42,9 @@ module.exports = {
             options: {
               maxWidth: 1170,
               quality: 100,
+              maxWidth: 800,
+              sizeByPixelDensity: true,
+              showCaptions: true,
             },
           },
           {
