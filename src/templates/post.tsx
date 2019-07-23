@@ -6,16 +6,16 @@ import * as React from 'react';
 import styled, { css } from 'react-emotion';
 import { Helmet } from 'react-helmet';
 
-import AuthorCard from '../components/AuthorCard';
 import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
 import PostCard from '../components/PostCard';
 import PostContent from '../components/PostContent';
 import PostFullFooter from '../components/PostFullFooter';
-import PostFullFooterRight from '../components/PostFullFooterRight';
 import ReadNextCard from '../components/ReadNextCard';
 import Subscribe from '../components/subsribe/Subscribe';
 import Wrapper from '../components/Wrapper';
+import Meta from '../components/Meta';
+
 import IndexLayout from '../layouts';
 import { colors } from '../styles/colors';
 import { inner, outer, SiteHeader, SiteMain } from '../styles/shared';
@@ -48,12 +48,12 @@ export const NoImage = css`
 
 export const PostFullHeader = styled.header`
   margin: 0 auto;
-  padding: 6vw 3vw 3vw;
+  padding: 3vw 3vw 3vw;
   max-width: 1040px;
   text-align: center;
 
   @media (max-width: 500px) {
-    padding: 14vw 3vw 10vw;
+    padding: 7vw 3vw 10vw;
   }
 `;
 
@@ -92,7 +92,7 @@ const PostFullImage = styled.figure`
   border-radius: 5px;
 
   @media (max-width: 1170px) {
-    margin: 0 -4vw -100px;
+    margin: 0 -4vw -140px;
     height: 600px;
     border-radius: 0;
   }
@@ -227,54 +227,17 @@ const PageTemplate: React.SFC<PageTemplateProps> = props => {
     url: config.siteUrl + props.pathContext.slug,
   };
 
-
   return (
     <IndexLayout className="post-template">
-      <Helmet>
-        <title>{post.frontmatter.title}</title>
-
-        <meta property="og:site_name" content={config.title} />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={post.frontmatter.title} />
-        <meta property="og:description" content={post.excerpt} />
-        <meta property="og:url" content={config.siteUrl + props.pathContext.slug} />
-        {post.frontmatter.image && (
-          <meta
-            property="og:image"
-            content={config.siteUrl + post.frontmatter.image.childImageSharp.fluid.src}
-          />
-        )}
-        <meta property="article:published_time" content={post.frontmatter.date} />
-        {/* not sure if modified time possible */}
-        {/* <meta property="article:modified_time" content="2018-08-20T15:12:00.000Z" /> */}
-        {post.frontmatter.tags && (
-          <meta property="article:tag" content={post.frontmatter.tags[0]} />
-        )}
-
-        <meta property="article:publisher" content={config.twitter} />
-        <meta property="article:author" content={config.twitter} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={post.frontmatter.title} />
-        <meta name="twitter:description" content={post.excerpt} />
-        <meta name="twitter:url" content={config.siteUrl + props.pathContext.slug} />
-        {post.frontmatter.image && (
-          <meta
-            name="twitter:image"
-            content={config.siteUrl + post.frontmatter.image.childImageSharp.fluid.src}
-          />
-        )}
-        <meta name="twitter:label1" content="Written by" />
-        <meta name="twitter:data1" content={post.frontmatter.author.id} />
-        <meta name="twitter:label2" content="Filed under" />
-        {post.frontmatter.tags && <meta name="twitter:data2" content={post.frontmatter.tags[0]} />}
-        <meta name="twitter:site" content={`@${config.twitter.split('https://twitter.com/')[1]}`} />
-        <meta
-          name="twitter:creator"
-          content={`@${config.twitter.split('https://twitter.com/')[1]}`}
-        />
-        {width && <meta property="og:image:width" content={width} />}
-        {height && <meta property="og:image:height" content={height} />}
-      </Helmet>
+      <Meta
+        title={post.frontmatter.title}
+        description={post.excerpt}
+        path={props.pathContext.slug}
+        image={post.frontmatter.image}
+        date={post.frontmatter.date}
+        tags={post.frontmatter.tags}
+        authorName={post.frontmatter.author.id}
+      />
       <Wrapper className={`${PostTemplate}`}>
         <header className={`${SiteHeader} ${outer}`}>
           <div className={`${inner}`}>
@@ -290,14 +253,6 @@ const PageTemplate: React.SFC<PageTemplateProps> = props => {
                   <PostFullMetaDate dateTime={post.frontmatter.date}>
                     {post.frontmatter.userDate}
                   </PostFullMetaDate>
-                  {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
-                    <>
-                      <DateDivider>/</DateDivider>
-                      <Link to={`/tags/${_.kebabCase(post.frontmatter.tags[0])}/`}>
-                        {post.frontmatter.tags[0]}
-                      </Link>
-                    </>
-                  )}
                 </PostFullMeta>
                 <PostFullTitle>{post.frontmatter.title}</PostFullTitle>
               </PostFullHeader>

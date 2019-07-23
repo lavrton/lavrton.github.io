@@ -61,7 +61,7 @@ __But we want to listen to clicks on a circle. How to do this? How to detect tha
 As we have information about our circle’s coordinates and sizes we can simply use mathematics to detect a click on a circle with trivial calculations. All we need is to get mouse position from click event and check all circles for intersection:
 
 ```javascript
-unction isIntersect(point, circle) {
+function isIntersect(point, circle) {
   return Math.sqrt((point.x-circle.x) ** 2 + (point.y - circle.y) ** 2) < circle.radius;
 }
 

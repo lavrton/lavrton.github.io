@@ -7,6 +7,8 @@ import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
 import PostCard from '../components/PostCard';
 import Wrapper from '../components/Wrapper';
+import Meta from '../components/Meta';
+
 import IndexLayout from '../layouts';
 import config from '../website-config';
 import {
@@ -89,7 +91,15 @@ const IndexPage: React.SFC<IndexProps> = props => {
   const height = String(Number(width) / props.data.header.childImageSharp.fluid.aspectRatio);
   return (
     <IndexLayout className={`${HomePosts}`}>
-      <Helmet>
+      <Meta
+        title={config.title}
+        type="website"
+        description={config.description}
+        path={''}
+        image={props.data.header}
+        authorName={'Anton'}
+      />
+      {/* <Helmet>
         <title>{config.title}</title>
         <meta property="og:site_name" content={config.title} />
         <meta property="og:type" content="website" />
@@ -109,7 +119,7 @@ const IndexPage: React.SFC<IndexProps> = props => {
         <meta name="twitter:site" content={`@${config.twitter.split('https://twitter.com/')[1]}`} />
         <meta property="og:image:width" content={width} />
         <meta property="og:image:height" content={height} />
-      </Helmet>
+      </Helmet> */}
       <Wrapper>
         <header
           className={`${SiteHeader} ${outer}`}
