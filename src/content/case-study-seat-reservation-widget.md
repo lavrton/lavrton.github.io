@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Case study: seat reservation widget"
+title: "Case study: Seats Reservation Widget"
 author: Anton
 tags: ["case study", "canvas", "react"]
 image: img/case-study-seat-reservation-widget-1.jpg
@@ -8,22 +8,22 @@ date: "2019-07-23"
 draft: false
 ---
 
-### Do you want to make a seat reservation system on your website?
+### Do you want to make a seat booking platform on your website?
 
 This post will describe steps to design a seat reservation system for music festival website made with JavaScript.
 
-It will show how to use [React](https://reactjs.org/), 2d canvas and [Konva](https://konvajs.org/) framework to make high performance widget.
+It will show how to use [React](https://reactjs.org/), 2d canvas and [Konva](https://konvajs.org/) framework to make high-performance widget.
 
-_[Open demo](https://okqzo.codesandbox.io/). Looking for a help with similar application? [Contact me](/consulting)._
+_[Open demo](https://okqzo.codesandbox.io/). Looking for help with a similar application? [Contact me](/consulting)._
 
 
 ## The idea
 
-The client need ability to reserve and book seats to the music festival directly on the website. It is important to see available sections, seats and their prices.
+The client need the ability to reserve and book seats to the music festival directly on the website. It is important to see available sections, seats and their prices.
 
-For some period of time the client was using [https://www.seats.io/](https://www.seats.io/) to render seats chart and to allow selecting and booking. But as prices was coming up and there were some issues with backend integration and making sure that there is no double booking, the client decided to make its own solution to inject into main website.
+For a while the client was using [https://www.seats.io/](https://www.seats.io/) to render seats chart and to allow selecting and booking. But as prices were coming up and there were some issues with backend integration and making sure that there is no double booking, the client decided to make its own solution to inject into the main website.
 
-So the task was to create a similar solution with some simplifications that allows to draw charts like (seats.io sample):
+So the task was to create a similar solution with some simplifications that allow to draw charts like seats.io:
 
 ![Seatsio demo](img/case-study-seat-reservation-widget-seatsio.png)
 
@@ -35,19 +35,19 @@ As the client is already using [React](https://reactjs.org/) for the main applic
 
 When you are making a chart or some data visualizations there are tons of available options and approaches.
 
-You can create a chart with regular DOM (bunch of `divs`), SVG element, 2d canvas or WebGL.  As the client comes to me from the [Konva](https://konvajs.org/) website he already decided to make it with 2d canvas. But before jumping to consulting I was thinking about other approaches.
+You can create a chart with regular DOM (a bunch of `divs`), SVG element, 2d canvas or WebGL.  As the client comes to me from the [Konva](https://konvajs.org/) website he already decided to make it with 2d canvas. But before jumping to consulting I was thinking about other approaches.
 
-WebGL can be an overkill for the solution because it may be too low-level and requires implementation that hard to make in short time and make it simple.
+WebGL can be an overkill for the solution because it may be too low-level and requires implementation that hard to make in a short time and make it simple.
 
 Bunch of `divs` and `spans` and SVG drawings are very similar DOM-based solutions. The chart with seats may have A LOT of elements, like some shapes for seats, text labels for rows, columns and sections, etc. So it may produce a lot of DOM elements. They can slow down the performance of the application.
 
-2d canvas solution don't need many DOM elements (it need just a canvas) so it can lead to a better performance comparing to SVG solution. Also if you are using `Konva` framework you already have some built-in functions that can help you bootstrap the application faster, like drag&drop, drag boundaries limits, caching to boost the performance (more on this later). `react-konva` npm package will allow us to make a React component.
+2d canvas solution doesn't need many DOM elements (it need just a canvas) so it can lead to a better performance comparing to SVG solution. Also if you are using `Konva` framework you already have some built-in functions that can help you bootstrap the application faster, like drag&drop, drag boundaries limits, caching to boost the performance (more on this later). `react-konva` npm package will allow us to make a React component.
 
 ## Building the architecture
 
 The chart structure will be loaded from the backend. The JSON has full information about available sections, seats, prices, etc.
 
-The char building starts from the data loading and making initial layout for the chart:
+The chart building starts from the data loading and making an initial layout for the chart:
 
 ```javascript
 const useFetch = url => {
@@ -89,12 +89,12 @@ Now we need to decide how we will layout the chart and how we will set positions
 
 There are two main approaches:
 
-1. **From top to bottom**. When a parent container decides its own size and pass size to child components down to the tree.
-2. **From bottom to top**. When a child component define its own size manually and then the parent elements adopts its own size and positions of children elements.
+1. **From top to bottom**. When a parent container decides its own size and passes size to child components down to the tree.
+2. **From bottom to top**. When a child component defines its own size manually and then the parent element adopts its own size and positions of children elements.
 
-When you are building the web application with CSS you can use any of that methods or even combine them.
+When you are building the web application with CSS you can use any of those methods or even combine them.
 
-In general **from bottom to top** approach should work better, because the parent container don't need to know full information about children elements and their sizes to define layout. But with `Konva` you can't use that method directly because you have to set all positions of all elements manually. Let me show the issue:
+In general **from bottom to top** approach should work better, because the parent container doesn't need to know full information about children elements and their sizes to define layout. But with `Konva` you can't use that method directly because you have to set all positions of all elements manually. Let me show the issue:
 
 ```javascript
 <Stage width={width} height={height}>
@@ -110,7 +110,7 @@ In general **from bottom to top** approach should work better, because the paren
 </Stage>
 ```
 
-As I solution I decided to create a special file `layout.js` where I can define all the constants and the functions to calculate a size of any element:
+As I solution I decided to create a special file `layout.js` where I can define all the constants and the functions to calculate the size of any element:
 
 ```javascript
 export const SEAT_SIZE = 10;
@@ -198,7 +198,7 @@ const toggleScale = React.useCallback(() => {
 
 ## Drawing the chart
 
-The actual rendering of the chart is very straightforward. We are just using `<Group>` to organize sections, drawing background for each section as a rectangle and a seats as circles.
+The actual rendering of the chart is very straightforward. We are just using `<Group>` to organize sections, drawing background for each section as a rectangle and seats as circles.
 
 As the result of initial drawing I have this:
 
@@ -206,9 +206,9 @@ As the result of initial drawing I have this:
 
 ## Performance
 
-After making initial implementation of all basic functions I need to check how the app works in term of the performance.
+After making the initial implementation of all basic functions I need to check how the app works in term of the performance.
 
-One of the cool side of 2d canvas and `Konva` frameworks is the ability to cache any node (like a shape or a group) into an image. So the browser doesn't need to redraw every node on an update. Because it can just draw cached bitmap image. It is much faster for many cases.
+One of the cool side of 2d canvas and `Konva` frameworks is the ability to cache any node (like a shape or a group) into an image. So the browser doesn't need to redraw every node on an update. Because it can just draw a cached bitmap image. It is much faster for many cases.
 
 In this app I used a caching for sections:
 
@@ -231,11 +231,11 @@ const Section = ({x ,y}) => {
 
 When I tried to emulate low-level device on my MacBook the performance for drag&drop increased a lot from 5-10 fps to 50-60 fps!
 
-Another way to improve the widget is to make it as small as possible in terms of dependencies. There is no sense to remove React from the solution, because it is already used in the main client's application. We can remove `Konva` dependency and draw everything with SVG, but it can drop realtime performance
+Another way to improve the widget is to make it as small as possible in terms of dependencies. There is no sense to remove React from the solution because it is already used in the main client's application. We can remove `Konva` dependency and draw everything with SVG, but it can drop realtime performance
 
-> The bad SVG performance is just a guess and may not be true. For large apps it is better to make prototype with all possible approaches and see which one works better.
+> The bad SVG performance is just a guess and may not be true. For large apps, it is better to make a prototype with all possible approaches and see which one works better.
 
-The next step will is to make `react-konva` dependency as small as possible. But default `Konva` codebase is large, it has many shapes, filters, etc. In out case we don't need all of these, accept some shapes. To make it smaller we can do this:
+The next step will is to make `react-konva` dependency as small as possible. But default `Konva` codebase is large, it has many shapes, filters, etc. In our case we don't need all of these, accept some shapes. To make it smaller we can do this:
 
 ```javascript
 // instead of:
@@ -261,7 +261,7 @@ export {
 
 ## The result
 
-At the end of the work we have a fast and easy to use widget that works on mobile and desktop browsers.
+At the end of the work, we have a fast and easy to use widget that works on mobile and desktop browsers.
 
 You can try it:
 
@@ -269,4 +269,4 @@ You can try it:
 
 --- 
 
-Looking for a help with similar application? [Contact me](/consulting).
+Looking for help with a similar application? [Contact me](/consulting).
