@@ -265,7 +265,7 @@ At the end of the work, we have a fast and easy to use widget that works on mobi
 
 You can try it:
 
-<iframe src="https://codesandbox.io/embed/vigilant-wildflower-okqzo?fontsize=14" title="Seats reservation prototype. V1" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe src="https://codesandbox.io/embed/github//lavrton/lavrton.github.io/tree/source/demos/seats-reservation?hidenavigation=1&view=split&fontsize=10" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 --- 
 
