@@ -22,12 +22,12 @@
 <span class="token operator">&lt;</span><span class="token operator">/</span>Stage<span class="token operator">&gt;</span></code></pre></div>
 <h2>Requirement - transparent, non-overlapping regions</h2>
 <p>To make the basic image visible, we need to make our regions transparent, so even after some drawing, you see the whole image. With the <code class="language-text">Konva</code> and 2d canvas API, it is simple, we can just set alpha channel with <code class="language-text">opacity</code> attribute:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">&lt;Line
-  points={region.points}
-  fill={region.color}
-  opacity={0.7}
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>Line
+  points<span class="token operator">=</span><span class="token punctuation">{</span>region<span class="token punctuation">.</span>points<span class="token punctuation">}</span>
+  fill<span class="token operator">=</span><span class="token punctuation">{</span>region<span class="token punctuation">.</span>color<span class="token punctuation">}</span>
+  opacity<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">0.7</span><span class="token punctuation">}</span>
   closed
-/&gt;</code></pre></div>
+<span class="token operator">/</span><span class="token operator">&gt;</span></code></pre></div>
 <p>That works just fine. You will see the underlying image. But it produces another issue, we can have overlapping regions:</p>
 <p><img src="/annotate-2-c50d909110bec6f80ba3d00f468dd30d.jpg" alt="Overlap sample"/></p>
 <p>In that case, we have overlapping road and car annotations. By the requirements of machine learning algorithms, such situations are not acceptable. Every pixel of an image should represent a color of particular annotation. In the case of overlapping objects, we have mixed colors. How to resolve the issue?</p>
@@ -58,9 +58,9 @@
     <span class="token operator">&lt;</span><span class="token operator">/</span>Layer<span class="token operator">&gt;</span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
-<p>Now a region is not transparent when we are drawing it into the canvas element. But the canvas element itself is transparent, so the regions look like transparent. We don’t the “overlapping sections” issues:</p>
+<p>Now a region is not transparent when we are drawing it into the canvas element. But the canvas element itself is transparent, so the regions look like transparent. We don’t have the “overlapping sections” issues:</p>
 <p><img src="/annotate-3-57307a306b4041a9461310f61155d83b.jpg" alt="No overlap sample"/></p>
-<p>That solves the problem. But later in time, we have another requirement, we need the ability to “select” a region. When a region is selected it should have no opacity (or very tiny). But we can’t do that with the current approach. Why? Good question. Because when we set opacity with CSS we are setting a maximum opacity for all regions. How to fix it?</p>
+<p>That solves the problem. But later in time, we have another requirement, we need the ability to “select” a region. When a region is selected it should have no transparency (or very tiny). But we can’t do that with the current approach. Why? Good question. Because when we set opacity with CSS we are setting a maximum opacity for all regions. How to fix it?</p>
 <h3>Solution 2 - cut regions from each other</h3>
 <p>The idea is simple. Let think that we have two overlapping regions A and B. First we are drawing the region A on canvas. Then we are erasing a part that overlaps with B. Then we draw the region B. Thanks to <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation" target="_blank" rel="nofollow noopener noreferrer">globalCompositeOperation</a> from 2d canvas API, we can easily do it:</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token function-variable function">Regions</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> regions<span class="token punctuation">,</span> selectedId <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
@@ -144,8 +144,8 @@
 <p>That approach works MUCH faster, even for very large images.</p>
 <h2>The result</h2>
 <p>After some polishing, implementing better navigation, showing the list of current labels we have a working prototype.
-The real client’s app was working a bit different because it has some other extra features, but it will important to make a proof-of-concept to make sure that selected technologies will do the work.</p>
-<p>Having that system we can easily export mask images into machine learning algorithms.</p>
+The real client’s app is working a bit differently because it has some other extra features, but it was important to make a proof-of-concept to make sure that selected technologies will do the work.</p>
+<p>With that system we can easily export mask images into machine learning algorithms.</p>
 <p>Here is the full demo (or open it in <a href="https://codesandbox.io/embed/github/konvajs/site/tree/master/react-demos/image-label-tool" target="_blank" rel="nofollow noopener noreferrer">a new tab</a>):</p>
 <iframe src="https://codesandbox.io/embed/github/konvajs/site/tree/master/react-demos/image-label-tool?hidenavigation=1&amp;view=preview&amp;fontsize=10" style="width:100%;height:500px;border:0;border-radius:4px;overflow:hidden" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 <hr/>
