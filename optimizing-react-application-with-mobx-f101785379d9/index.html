@@ -9,7 +9,7 @@
 <p>I started to think to use <a href="https://github.com/bvaughn/react-virtualized" target="_blank" rel="nofollow noopener noreferrer">react-virtualized</a> for hiding invisible captions. This should 100% solve the issue. But, the app has some features about scrolling list in several conditions. To calculate correct scrolling position I needed all elements to be in the DOM (otherwise calculation is too complex). As I have some legacy code, this change may take too long time to implement and test and it may break the app in some cases.</p>
 <p>So I continued to think about a faster solution. In that project, I was using <a href="https://mobx.js.org/" target="_blank" rel="nofollow noopener noreferrer">mobx</a> for state management. The cool thing about it is observable values and ability to create React components that OBSERVE changes. So I thought: I need to update item element but how to update index directly without calling render of the whole caption?</p>
 <p>This is how part for render function was looking before changes:</p>
-<p><img src="%D0%B1=/img/react-mobx-perf-2.png" alt="Segment code"/></p>
+<p><img src="/react-mobx-perf-2-72d0a94e6ffb99f55abc6e6ad948d819.png" alt="Segment code"/></p>
 <p><a href="https://github.com/mobxjs/mobx-react" target="_blank" rel="nofollow noopener noreferrer">mobx-react</a> automatically track usage of properties in render function. “index” property changed — component updated.</p>
 <p>But here is quick and simple fix. Let us create special component for displaying JUST index:</p>
 <p><img src="/react-mobx-perf-3-78c8f3549a622f8be0252a2320735014.png" alt="Index code"/></p>
