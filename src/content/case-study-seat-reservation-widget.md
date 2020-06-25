@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Case study: Seats Reservation Widget"
+title: "Case study: Seats Reservation Widget with Javascript"
 author: Anton
 tags: ["case study", "canvas", "react"]
 image: img/case-study-seat-reservation-widget-1.jpg
@@ -14,7 +14,7 @@ This post will describe steps to design a seat reservation system for music fest
 
 It will show how to use [React](https://reactjs.org/), 2d canvas and [Konva](https://konvajs.org/) framework to make high-performance widget.
 
-_[Open demo](https://okqzo.codesandbox.io/). Looking for help with a similar application? [Contact me](/consulting)._
+_[Open demo](https://codesandbox.io/embed/github/konvajs/site/tree/master/react-demos/seats-reservation). Looking for help with a similar application? [Contact me](/consulting)._
 
 
 ## The idea
@@ -263,9 +263,9 @@ export {
 
 At the end of the work, we have a fast and easy to use widget that works on mobile and desktop browsers.
 
-You can try it:
+You can try here (or open in [a new tab](https://codesandbox.io/embed/github/konvajs/site/tree/master/react-demos/seats-reservation)):
 
-<iframe src="https://codesandbox.io/embed/github//lavrton/lavrton.github.io/tree/source/demos/seats-reservation?hidenavigation=1&view=split&fontsize=10" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe src="https://codesandbox.io/embed/github/konvajs/site/tree/master/react-demos/seats-reservation?hidenavigation=1&view=split&fontsize=10" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 --- 
 

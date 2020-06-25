@@ -26,7 +26,7 @@ So I continued to think about a faster solution. In that project, I was using [m
 
 This is how part for render function was looking before changes:
 
-![Segment code](б=/img/react-mobx-perf-2.png)
+![Segment code](/img/react-mobx-perf-2.png)
 
 [mobx-react](https://github.com/mobxjs/mobx-react) automatically track usage of properties in render function. “index” property changed — component updated.
 

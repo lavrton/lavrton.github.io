@@ -19,7 +19,6 @@ Recently I was building large canvas application with a React for a client. The 
 That is how app looks like:
 
 
-
 ```javascript
 function generateTargets() {
     return _.times(1000, (i) => {

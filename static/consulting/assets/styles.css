@@ -306,6 +306,10 @@ nav.main-nav a.cta {
   padding-bottom: 20px;
 }
 
+.section strong {
+  font-weight: 900;
+}
+
 /* Typography */
 /*Accent color*/
 a,
