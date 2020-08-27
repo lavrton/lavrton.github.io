@@ -51,7 +51,7 @@
 					<img class="2x" id="avatar" src="https://www.gravatar.com/avatar/6903294dace446e640b0a316f8fc4db8?size=160">
 				</a>
 				<h1>Anton Lavrenov</h1>
-				<h2>I help technical leads validate ideas, bootstrap prototypes and polish graphical web applications.</h2>
+				<h2>I help technical leads validate ideas, bootstrap prototypes and boost development process.</h2>
 			</header>
 		</section>
 	</div> 
@@ -120,22 +120,46 @@
 				</p>
 				<p>
 					<strong>Expensive and guaranteed work</strong>.
+				</p>
+				<p>
 					Get in touch!
 				</p>
 			</div>
+		</section>
+		
+		<section class="section options-section">
+			<h3>Consulting options:</h3>
+			<div class="options">
+			<div class="option">
+				<h3>1. Biweekly consulting session</h3>
+				<p>I will answer all your questions. Anything that will help you boost the development process. I will provide all information about Konva features or bottlenecks, I will explain the documentation if needed, I will consult about all aspects of general development.</p>
+				<p>Price - 2000 USD per two weeks.</p>
+			</div>
+			<div class="option">
+				<h3>2. Biweekly consulting + demos session</h3>
+				<p>This option includes option 1, but I may also provide some custom prototypes, demos, and working code examples that solve particular features in the app as part of answering the question.</p>
+				<p>Price - 3000 USD per two weeks.</p>
+			</div>
+		</div>
 		</section>
 		<section class="home">
 			<form action="https://formspree.io/anton@lavrton.com" method="POST">
 				<fieldset>
 					<legend>Let's talk</legend>
 					<div class="input-group fluid">
-						<input type="text" name="name" placeholder="Name">
+						<input type="text" name="name" placeholder="Name" required="true">
 					</div>
 					<div class="input-group fluid">
-						<input type="email" name="email" placeholder="Email">
+						<input type="email" name="email" placeholder="Email" required="true">
 					</div>
+					<select name="option" id="option" required="true">
+						<option value="Option" selected="" disabled="">Choose your option</option>
+						<option value="first option">I need first option - biweekly consulting</option>
+						<option value="second option">I need second option - biweekly consulting + demos</option>
+						<option value="other">I need something very different</option>
+					</select>
 					<div class="input-group fluid">
-						<textarea name="message" placeholder="What do you want to create? Why do you need it?" style="width: 100%;" rows="4"></textarea>
+						<textarea name="message" placeholder="What is your struggle?" style="width: 100%;" rows="4" required="true"></textarea>
 					</div>
 					<input type="hidden" name="_subject" value="Do you need a help from Anton Lavrenov?" />
 					<input type="hidden" name="_next" value="https://lavrton.com/sent" />
