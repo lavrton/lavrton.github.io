@@ -280,9 +280,12 @@ nav.main-nav a.cta {
 .options {
   max-width: 1000px !important;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .option {
+  padding: 20px;
   width: 50%;
 }
 
