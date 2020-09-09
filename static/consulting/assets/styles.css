@@ -277,12 +277,26 @@ nav.main-nav a.cta {
   padding: 0px 40px 20px 40px;
 }
 
+.kind-word {
+  padding-top: 40px;
+}
+
+.kind-word .quote {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  line-height: 1.3;
+}
+
 .options {
   max-width: 1000px !important;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .option {
+  padding: 20px;
   width: 50%;
 }
 
