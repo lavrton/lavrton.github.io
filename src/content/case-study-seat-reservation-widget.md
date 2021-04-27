@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Case study: Seats Reservation Widget with Javascript"
+title: 'Case study: Seats Reservation Widget with Javascript'
 author: Anton
-tags: ["case study", "canvas", "react"]
+tags: ['case study', 'canvas', 'react']
 image: img/case-study-seat-reservation-widget-1.jpg
-date: "2019-07-23"
+date: '2019-07-23'
 draft: false
 ---
 
@@ -15,7 +15,6 @@ This post will describe steps to design a seat reservation system for music fest
 It will show how to use [React](https://reactjs.org/), 2d canvas and [Konva](https://konvajs.org/) framework to make high-performance widget.
 
 _[Open demo](https://codesandbox.io/embed/github/konvajs/site/tree/master/react-demos/seats-reservation). Looking for help with a similar application? [Contact me](/consulting)._
-
 
 ## The idea
 
@@ -35,7 +34,7 @@ As the client is already using [React](https://reactjs.org/) for the main applic
 
 When you are making a chart or some data visualizations there are tons of available options and approaches.
 
-You can create a chart with regular DOM (a bunch of `divs`), SVG element, 2d canvas or WebGL.  As the client comes to me from the [Konva](https://konvajs.org/) website he already decided to make it with 2d canvas. But before jumping to consulting I was thinking about other approaches.
+You can create a chart with regular DOM (a bunch of `divs`), SVG element, 2d canvas or WebGL. As the client comes to me from the [Konva](https://konvajs.org/) website he already decided to make it with 2d canvas. But before jumping to consulting I was thinking about other approaches.
 
 WebGL can be an overkill for the solution because it may be too low-level and requires implementation that hard to make in a short time and make it simple.
 
@@ -50,35 +49,35 @@ The chart structure will be loaded from the backend. The JSON has full informati
 The chart building starts from the data loading and making an initial layout for the chart:
 
 ```javascript
-const useFetch = url => {
+const useFetch = (url) => {
   const [data, setData] = React.useState(null);
   React.useEffect(() => {
     fetch(url)
-      .then(res => res.json())
-      .then(data => setData(data));
+      .then((res) => res.json())
+      .then((data) => setData(data));
   }, [url]);
   return data;
 };
 
-const MainStage = props => {
-  const jsonData = useFetch("./seats-data.json");
+const MainStage = (props) => {
+  const jsonData = useFetch('./seats-data.json');
   const width = 1000;
   const height = 1000;
 
   if (jsonData === null) {
     return <div>Loading...</div>;
   }
-  
+
   return (
     <Stage width={width} height={height}>
       <Layer>
-        {sections.map(item => {
-          return <Section section={item} />
-          })}
+        {sections.map((item) => {
+          return <Section section={item} />;
+        })}
       </Layer>
     </Stage>
-  )
-}
+  );
+};
 ```
 
 ## Layout
@@ -119,16 +118,13 @@ export const SUBSECTION_PADDING = 30;
 
 export const SECTION_TOP_PADDING = 40;
 
-export const getSubsectionHeight = subsection => {
+export const getSubsectionHeight = (subsection) => {
   const rows = Object.keys(subsection.seats_by_rows);
   return SEATS_DISTANCE * rows.length + SUBSECTION_PADDING * 2;
 };
 
-export const getSectionHeight = section => {
-  return (
-    Math.max(...section.subsections.map(getSubsectionHeight)) +
-    SECTION_TOP_PADDING
-  );
+export const getSectionHeight = (section) => {
+  return Math.max(...section.subsections.map(getSubsectionHeight)) + SECTION_TOP_PADDING;
 };
 ```
 
@@ -142,19 +138,19 @@ let lastSectionPosition = 0;
 
 <Stage width={width} height={height}>
   <Layer>
-    {sections.map(item => {
+    {sections.map((item) => {
       const height = layout.getSectionHeight(section);
       const position = lastSectionPosition + layout.SECTIONS_PADDING;
       lastSectionPosition = position + height;
-      return <Section y={position} section={item} />
+      return <Section y={position} section={item} />;
     })}
   </Layer>
-</Stage>
+</Stage>;
 ```
 
 ## Zooming
 
-The chart can be large, if you are using it on the desktop,  you can draw it as is, because you have plenty of space to make everything visible. But on mobile things become different.
+The chart can be large, if you are using it on the desktop, you can draw it as is, because you have plenty of space to make everything visible. But on mobile things become different.
 
 We need to find a way to zoom out the whole chart to make it fully visible and zoom in to make it possible to interact with the particular seats.
 
@@ -213,7 +209,7 @@ One of the cool side of 2d canvas and `Konva` frameworks is the ability to cache
 In this app I used a caching for sections:
 
 ```javascript
-const Section = ({x ,y}) => {
+const Section = ({ x, y }) => {
   const containerRef = React.useRef();
   React.useEffect(() => {
     // recache group on any update
@@ -226,7 +222,7 @@ const Section = ({x ,y}) => {
       {/* internal components of the section */}
     </Group>
   );
-}
+};
 ```
 
 When I tried to emulate low-level device on my MacBook the performance for drag&drop increased a lot from 5-10 fps to 50-60 fps!
@@ -244,19 +240,12 @@ The next step will is to make `react-konva` dependency as small as possible. But
 // we will load minimal version of 'react-konva`
 // minimal version has NO support for core shapes and filters
 // if you want import a shape into Konva namespace you can just do this:
-import "konva/lib/shapes/Rect";
-import "konva/lib/shapes/Circle";
-import "konva/lib/shapes/Text";
+import 'konva/lib/shapes/Rect';
+import 'konva/lib/shapes/Circle';
+import 'konva/lib/shapes/Text';
 
 // load minimal version of 'react-konva`
-export {
-  Stage,
-  Layer,
-  Group,
-  Rect,
-  Circle,
-  Text
-} from "react-konva/lib/ReactKonvaCore";
+export { Stage, Layer, Group, Rect, Circle, Text } from 'react-konva/lib/ReactKonvaCore';
 ```
 
 ## The result
@@ -267,6 +256,6 @@ You can try here (or open in [a new tab](https://codesandbox.io/embed/github/kon
 
 <iframe src="https://codesandbox.io/embed/github/konvajs/site/tree/master/react-demos/seats-reservation?hidenavigation=1&view=split&fontsize=10" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
---- 
+---
 
 Looking for help with a similar application? [Contact me](/consulting).
