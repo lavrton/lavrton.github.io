@@ -202,6 +202,8 @@ CPU usage on my computer on a lower quality:
 
 ## The result
 
+_Note: as the demo bellow is displayed in iframe, it may not fully work on some browsers. Try to open it [in a new tab](https://codesandbox.io/embed/github/lavrton/lavrton.github.io/tree/source/demos/stream-editor-with-polotno)._
+
 <iframe src="https://codesandbox.io/embed/github/lavrton/lavrton.github.io/tree/source/demos/stream-editor-with-polotno?hidenavigation=1&view=preview&fontsize=10" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 ---
